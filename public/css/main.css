@@ -1,15 +1,32 @@
+.trip-view{
+    background-image: url("/images/background.jpg");
+    background-repeat: repeat;
+    color:white !important;
+}
 .top-picture {
-    height:400px;
+    height:300px;
 }
 div.no-padding, img.no-padding, .no-padding {
     padding:0;
 }
 .rating {
-    font-size: 3em;
+    font-size: 2em;
+    margin-bottom: 1em;
 }
+.user-stars{
+    width:6em;
+    height:auto;
+}
+
 .rating .stars{
     color:gold;
-    text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
+}
+.user-stars{
+    color:gold;
+}
+.user-comment {
+    margin-bottom:1em;
 }
 .comment {
     margin-bottom: 20px;
@@ -17,8 +34,8 @@ div.no-padding, img.no-padding, .no-padding {
 .user-badge {
     height: auto;
     width: auto;
-    max-width: 150px;
-    max-height: 150px;
+    max-width: 100px;
+    max-height: 100px;
     float:left;
     position:relative;
     top:50%;
@@ -36,7 +53,7 @@ div.no-padding, img.no-padding, .no-padding {
     border-radius: 100%;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
-    background: url(https://avatars2.githubusercontent.com/u/14371587?v=3&u=6b992720e2f140a0825afbf07466cb6d8e099a13&s=140) no-repeat;
+    background: url(/images/clooney.jpg) no-repeat;
     background-size:contain;
 }
 
@@ -47,13 +64,17 @@ div.no-padding, img.no-padding, .no-padding {
 .name {
     float: left;
     top: 20px;
-    padding-left:150px;
+    padding-left:100px;
 }
 button.btn.btn-rounded {
     border-radius: 150px;
     -webkit-border-radius: 150px;
     -moz-border-radius: 150px;
     margin:0 10px 0 10px;
+}
+.hide-extra{
+    width:100%;
+    overflow: hidden;
 }
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
