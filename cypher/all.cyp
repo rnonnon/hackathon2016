@@ -1,5 +1,10 @@
 CREATE
+// Creation of content
 (user_1:User {firstname:'Bianca', other_information: '....'}),
+(user_2:User {firstname:'Bart', other_information: '....'}),
+(user_3:User {firstname:'Jan', other_information: '....'}),
+
+
 (trip_1:Trip {title: 'Gluten free trip - traveller', start_date: 20160320, end_date: 20160320}),
 (trip_2:Trip {title: 'Gluten free trip - family', start_date: 20160912, end_date: 20160912}),
 
@@ -11,6 +16,17 @@ CREATE
 (location_6:Location {title: 'Schlosspark Charlottenburg', description: '', lat: '52.51996', long: '13.293800000000033'}),
 (location_7:Location {title: 'Technisches Museum', description: '', lat: '52.49862779999999', long: '13.376844300000016'}),
 
+(comment_1:Comment {message: 'asdfklsajdfklsjadf', date: ''}),
+(comment_2:Comment {message: 'asdfklsajdfklsjadf', date: ''}),
+
+(rating_1:Rating {message: 'asdfklsajdfklsjadf', date: ''}),
+
+(tags_1:Tag {message: 'asdfklsajdfklsjadf', date: ''}),
+
+
+// Relations
+(user_2)-[:LIKES]->(trip_2),
+(user_3)-[:LIKES]->(trip_1),
 
 (user_1)-[:TOOK_TRIP]->(trip_1),
 (location_6)-[:IS_PART_OF {start_date: '20160320110000', end_date: '20160320123000'}]->(trip_1),
@@ -24,4 +40,7 @@ CREATE
 (location_2)-[:IS_PART_OF {start_date: '20160912110000', end_date: '20160912123000'}]->(trip_2),
 (location_3)-[:IS_PART_OF {start_date: '20160912123000', end_date: '20160912140000'}]->(trip_2),
 (location_4)-[:IS_PART_OF {start_date: '20160912140000', end_date: '20160912160000'}]->(trip_2),
-(location_5)-[:IS_PART_OF {start_date: '20160912160000', end_date: '20160912180000'}]->(trip_2)
+(location_5)-[:IS_PART_OF {start_date: '20160912160000', end_date: '20160912180000'}]->(trip_2),
+
+(comment_1)-[:COMMENTED]->(trip_1),
+(comment_2)-[:COMMENTED]->(comment_1)

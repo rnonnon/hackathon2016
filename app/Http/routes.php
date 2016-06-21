@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/api/index/{tripId}', 'TripController@index');
 
-Route::get('/test', 'Test@index');
+Route::get('/api/start/{tripId}', 'TripController@startTrip');
+
+Route::get('/api/check-in/{tripId}/{locationId}', 'TripController@checkIn');
+
+Route::get('/api/skip/{tripId}/{locationId}', 'TripController@skipLocation');
