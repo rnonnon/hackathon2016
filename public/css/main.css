@@ -4,6 +4,13 @@
 div.no-padding, img.no-padding, .no-padding {
     padding:0;
 }
+.rating {
+    font-size: 3em;
+}
+.rating .stars{
+    color:gold;
+    text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+}
 .comment {
     margin-bottom: 20px;
 }
@@ -42,10 +49,11 @@ div.no-padding, img.no-padding, .no-padding {
     top: 20px;
     padding-left:150px;
 }
-.btn-rounded {
+button.btn.btn-rounded {
     border-radius: 150px;
     -webkit-border-radius: 150px;
     -moz-border-radius: 150px;
+    margin:0 10px 0 10px;
 }
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)

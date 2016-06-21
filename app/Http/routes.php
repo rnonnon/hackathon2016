@@ -11,4 +11,5 @@
 |
 */
 
-Route::get('/', 'Test@index');
+Route::get('trip/{id}', 'Test@index');
+Route::get('/', 'Home@index');
