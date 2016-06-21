@@ -31,11 +31,24 @@ div.no-padding, img.no-padding, .no-padding {
 .comment {
     margin-bottom: 20px;
 }
+.comment-icon {
+    width: 1.5em;
+}
+
+.location-description {
+    height:70px;
+    display: flex;
+    vertical-align: middle;
+    flex-direction: column;
+    justify-content: center;
+}
+.location-picture {
+    padding-top: 15px;
+}
+
 .user-badge {
-    height: auto;
-    width: auto;
-    max-width: 100px;
-    max-height: 100px;
+    width: 100px;
+    height: 100px;
     float:left;
     position:relative;
     top:50%;

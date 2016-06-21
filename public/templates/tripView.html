@@ -2,28 +2,25 @@
     <div class="row no-padding">
         <div>
             <img class="top-picture col-xs-12 no-padding" src="/images/header.jpg"/>
+
             <div style="position:relative">
                 <div>
-                    <div class="circular user-badge">
-                        <img src="/images/clooney.jpg" alt="" />
-                    </div>
+                    <img class="img-circle user-badge" ng-src="/images/comment-profile-{{tripView.trip.created_by}}.png"
+                         alt=""/>
                 </div>
                 <div class="name">
-                    <h2>Georges</h2>
+                    <h2>{{tripView.tripCreator.firstname}}</h2>
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <h1 class="col-xs-12">Trip Name</h1>
+        <h1 class="col-xs-12">{{tripView.trip.name}}</h1>
     </div>
     <div class="row">
         <div class="col-xs-12 rating">
             <span>
-                <img src="/images/stars.png"/> ({{tripView.numberOfRates}} rates)
-                <!--<uib-rating class="stars" ng-model="tripView.rateValue" max="tripView.maxRateValue"-->
-                                             <!--read-only="tripView.isRateReadonly">-->
-                <!--</uib-rating> ({{tripView.numberOfRates}} rates)-->
+                <img src="/images/stars.png"/> ({{tripView.trip.ratings.rated_by}} rates)
             </span>
         </div>
     </div>
@@ -40,15 +37,12 @@
             <h3>About</h3>
         </div>
         <div class="hide-extra col-xs-12">
-            <p>what we like best, every pleasure is to be welcomed and every pain avoided.
-                But in certain circumstances and owing to the claims of duty or the obligations of business
-                it will frequently occur that pleasures have to be repudiated and annoyances accepted.
-                The wise man therefore always holds in these matters to this principle of selectio</p>
+            <p>{{tripView.trip.description}}</p>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <p><img src="/images/comment.png"/> 24 comments</p>
+            <p><img class="comment-icon" src="/images/comment.png"/> {{tripView.trip.comments.length}} comments</p>
         </div>
     </div>
 
@@ -56,41 +50,21 @@
         <button type="button" class="btn-rounded btn btn-default btn-lg">Map view</button>
     </div>
 
-    <div class="row">
-        <div class="col-xs-1">
-            0
-        </div>
-        <div class="col-xs-11">
-            <div class="row">
-                <img class="col-xs-3"/>
-                <div class="col-xs-9">
-                    <p>what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstancwhat we</p>
-                </div>
+    <div ng-repeat="location in tripView.trip.locations">
+        <div class="row">
+            <div class="col-xs-2" >
+                <img src="/images/track-top.png" ng-if="$index == 0"/>
+                <img src="/images/track-bottom.png" ng-if="$index == (tripView.locationsSize - 1)"/>
+                <img src="/images/track-middle.png" ng-if="$index != 0 && $index != (tripView.locationsSize - 1)"/>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-1">
-            0
-        </div>
-        <div class="col-xs-11">
-            <div class="row">
-                <img class="col-xs-3"/>
-                <div class="col-xs-9">
-                    <p>what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstancwhat we</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-1">
-            <button style="width:15px; height:15px; border-radius: 100%"></button>
-        </div>
-        <div class="col-xs-11">
-            <div class="row">
-                <img class="col-xs-3"/>
-                <div class="col-xs-9">
-                    <p>what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstancwhat we</p>
+            <div class="col-xs-10">
+                <div class="row">
+                    <div class="col-xs-2 location-picture">
+                        <img class="img-rounded" ng-src="/images/waypoint-{{$index+1}}.jpg"/>
+                    </div>
+                    <div class="col-xs-10 location-description">
+                        <p>{{location.description}}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,48 +77,20 @@
             <h3>Comments</h3>
         </div>
     </div>
-    <div class="row comment">
-        <div class="col-xs-3">
-            <div class="circular small-user-badge">
-                <img src="https://avatars2.githubusercontent.com/u/14371587?v=3&u=6b992720e2f140a0825afbf07466cb6d8e099a13&s=140" alt="" />
+
+    <div ng-repeat="comment in tripView.trip.comments">
+        <div class="row comment">
+            <div class="col-xs-3">
+                <img class="img-circle" ng-src="/images/comment-profile-{{comment.commented_by}}.png" alt=""/>
             </div>
-        </div>
-        <div class="col-xs-9">
-            <div class="row">
-                <p class="user-comment">what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstancwhat we</p>
+            <div class="col-xs-9">
+                <div class="row">
+                    <p class="user-comment">{{comment.comment}}</p>
+                </div>
+                <div class="row">
+                    <img class="user-stars" src="/images/stars.png"/>
+                </div>
             </div>
-            <div class="row">
-                <img class="user-stars" src="/images/stars.png"/>
-            </div>
-        </div>
-    </div>
-    <div class="row comment">
-        <div class="col-xs-3">
-            <div class="circular small-user-badge">
-                <img src="https://avatars2.githubusercontent.com/u/14371587?v=3&u=6b992720e2f140a0825afbf07466cb6d8e099a13&s=140" alt="" />
-            </div>
-        </div>
-        <div class="col-xs-9">
-            <div class="row">
-                <p class="user-comment">what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstancwhat we</p>
-            </div>
-            <div class="row">
-                <img class="user-stars" src="/images/stars.png"/>
-            </div>
-        </div>
-    </div>
-    <div class="row comment">
-    <div class="col-xs-3">
-        <div class="circular small-user-badge">
-            <img src="https://avatars2.githubusercontent.com/u/14371587?v=3&u=6b992720e2f140a0825afbf07466cb6d8e099a13&s=140" alt="" />
-        </div>
-    </div>
-    <div class="col-xs-9">
-        <div class="row">
-            <p class="user-comment">what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstancwhat we</p>
-        </div>
-        <div class="row">
-            <img class="user-stars" src="/images/stars.png"/>
         </div>
     </div>
 </div>

@@ -4,7 +4,8 @@ angular.module('trip').config(['$routeProvider', '$locationProvider', function (
             templateUrl: '/templates/tripView.html',
             controller: 'TripViewController',
             controllerAs: 'tripView',
-            title: 'Trip view'
+            title: 'Trip view',
+            resolve:TripViewController.resolve
         })
         .when('/', {
             templateUrl: '/templates/home.html',
