@@ -25,6 +25,7 @@ var TripViewController = (function () {
         this.isRateReadonly = false;
         this.trip = tripData.trip;
         this.users = tripData.users;
+        angular.element("body").css("background-image", "");
     }
     Object.defineProperty(TripViewController.prototype, "tripCreator", {
         get: function () {

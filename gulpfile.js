@@ -21,8 +21,8 @@ var tsProject = ts.createProject({
 gulp.task('elixir', function() {
     return elixir(function(mix) {
         mix.scripts([
-            "../css/main.css",
-            "../../bower_components/bootstrap/dist/css/bootstrap.min.css"], 'public/css/main.css')
+            "../../bower_components/bootstrap/dist/css/bootstrap.min.css",
+            "../css/main.css"], 'public/css/main.css')
             .scripts([
                 "../../bower_components/jquery/dist/jquery.min.js",
                 "../../bower_components/bootstrap/dist/js/bootstrap.min.js",

@@ -15,6 +15,7 @@ class TripViewController {
     constructor(tripService:any, routeParams, tripData) {
         this.trip = tripData.trip;
         this.users = tripData.users;
+        angular.element("body").css("background-image","");
     }
     get tripCreator(){
         console.log(this.users[this.trip.created_by]);

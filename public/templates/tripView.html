@@ -1,7 +1,7 @@
-<div class="container-fluid trip-view">
+<div class="container-fluid trip-view" ng-style="{'background-image':'url(/images/background-{{tripView.trip.id}}.jpg)'}">
     <div class="row no-padding">
         <div>
-            <img class="top-picture col-xs-12 no-padding" src="/images/header.jpg"/>
+            <img class="top-picture col-xs-12 no-padding" ng-src="/images/header-{{tripView.trip.id}}.jpg"/>
 
             <div style="position:relative">
                 <div>
@@ -47,7 +47,7 @@
     </div>
 
     <div class="row text-center">
-        <button type="button" class="btn-rounded btn btn-default btn-lg">Map view</button>
+        <button type="button" class="btn-rounded btn btn-default btn-lg map-button">Map view</button>
     </div>
 
     <div ng-repeat="location in tripView.trip.locations">
