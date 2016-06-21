@@ -119,7 +119,7 @@ class TripController extends Controller
                             //location1
                             'id'          => 1,
                             'name'        => 'Checkpoint Charlie',
-                            'description' => 'Historical information',
+                            'description' => 'crossing point of former east and west Berlin',
                             'latitude'    => 52.5075927,
                             'longitude'   => 13.390368500000022,
                             'skipped'     => false,
@@ -129,7 +129,7 @@ class TripController extends Controller
                             //location2
                             'id'          => 2,
                             'name'        => 'Schloss Bellevue',
-                            'description' => '',
+                            'description' => 'residence of german president',
                             'latitude'    => 52.5175726,
                             'longitude'   => 13.352792799999975,
                             'skipped'     => false,
@@ -139,7 +139,7 @@ class TripController extends Controller
                             //location3
                             'id'          => 3,
                             'name'        => 'Restaurant "Simela"',
-                            'description' => 'Italian restaurant with glutenfree pizza',
+                            'description' => 'italian restaurant with glutenfree pizza',
                             'latitude'    => 52.52756729999999,
                             'longitude'   => 13.398033899999973,
                             'skipped'     => false,
@@ -148,8 +148,8 @@ class TripController extends Controller
                         6 => [
                             //location6
                             'id'          => 6,
-                            'name'        => 'Story of Berlin',
-                            'description' => 'Museum',
+                            'name'        => 'Schlosspark Charlottenburg',
+                            'description' => 'historical background information on Berlin',
                             'latitude'    => 52.51996,
                             'longitude'   => 13.293800000000033,
                             'skipped'     => false,
@@ -158,7 +158,7 @@ class TripController extends Controller
                         7 => [
                             //location7
                             'id'          => 7,
-                            'name'        => 'Technisches Museum',
+                            'name'        => 'history of science and technology',
                             'description' => 'Museum',
                             'latitude'    => 52.49862779999999,
                             'longitude'   => 13.376844300000016,
@@ -208,7 +208,7 @@ class TripController extends Controller
                             //location1
                             'id'          => 1,
                             'name'        => 'Checkpoint Charlie',
-                            'description' => 'Historical information',
+                            'description' => 'crossing point of former east and west Berlin',
                             'latitude'    => 52.5075927,
                             'longitude'   => 13.390368500000022,
                             'skipped'     => false,
@@ -218,7 +218,7 @@ class TripController extends Controller
                             //location2
                             'id'          => 2,
                             'name'        => 'Schloss Bellevue',
-                            'description' => '',
+                            'description' => 'residence of german president',
                             'latitude'    => 52.5175726,
                             'longitude'   => 13.352792799999975,
                             'skipped'     => false,
@@ -228,7 +228,7 @@ class TripController extends Controller
                             //location3
                             'id'          => 3,
                             'name'        => 'Restaurant "Simela"',
-                            'description' => 'Italian restaurant with glutenfree pizza',
+                            'description' => 'italian restaurant with glutenfree pizza',
                             'latitude'    => 52.52756729999999,
                             'longitude'   => 13.398033899999973,
                             'skipped'     => false,
