@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/api/index/{tripId}', 'TripController@index');
+Route::get('/api/index', 'TripController@index');
 
 Route::get('/api/start/{tripId}', 'TripController@startTrip');
 
