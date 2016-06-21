@@ -1,0 +1,22 @@
+{
+  "name": "hackathon2016",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xoakx/hackathon2016.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xoakx/hackathon2016/issues"
+  },
+  "homepage": "https://github.com/xoakx/hackathon2016#readme",
+  "dependencies": {
+    "bower": "^1.7.9"
+  }
+}
