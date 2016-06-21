@@ -238,7 +238,7 @@ class TripController extends Controller
                             //location4
                             'id'          => 4,
                             'name'        => 'Story of Berlin',
-                            'description' => 'Museum',
+                            'description' => 'discover historical perspective of Berlin',
                             'latitude'    => 52.50185999999999,
                             'longitude'   => 13.323120000000017,
                             'skipped'     => false,
@@ -248,7 +248,7 @@ class TripController extends Controller
                             //location5
                             'id'          => 5,
                             'name'        => 'Zoologischer Garten',
-                            'description' => 'Nice for children',
+                            'description' => 'wildlife in the middle of the city',
                             'latitude'    => 52.5079196,
                             'longitude'   => 13.33775460000004,
                             'skipped'     => false,
