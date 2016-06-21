@@ -6,6 +6,7 @@ class TripViewController {
     public maxRateValue:number = 5;
     public isRateReadonly:boolean = false;
     public numberOfRates:number;
+    public steps:Array<any>;
     constructor() {
         this.totalRateValue = 20;
         this.numberOfRates = 5;
