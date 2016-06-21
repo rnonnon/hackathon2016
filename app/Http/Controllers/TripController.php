@@ -53,7 +53,9 @@ class TripController extends Controller
     }
 
     protected function setBasePath($path, $data) {
-        \Session::set($this->getBasePathString() . $path, $data);
+        if (\Session::has($this->getBasePathString() . $path)) {
+            \Session::set($this->getBasePathString() . $path, $data);
+        }
     }
 
     protected function getBasePath($path = '') {
@@ -61,7 +63,9 @@ class TripController extends Controller
     }
 
     protected function setTripPath($tripId, $path, $data) {
-        \Session::set($this->getTripBasePathString($tripId) . $path, $data);
+        if (\Session::has($this->getTripBasePathString($tripId) . $path)) {
+            \Session::set($this->getTripBasePathString($tripId) . $path, $data);
+        }
     }
 
     protected function getTripPath($tripId, $path = '') {
