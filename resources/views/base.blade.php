@@ -1,15 +1,15 @@
 
-<html>
+<html ng-app="trip" ng-strict-di>
 <head>
+    <base href="/">
     <title>App Name - @yield('title')</title>
+    <script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/output.js') }}"></script>
+    <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}" />
+
 </head>
 <body>
-@section('sidebar')
-    This is the master sidebar.
-@show
+@yield('content')
 
-<div class="container">
-    @yield('content')
-</div>
 </body>
 </html>

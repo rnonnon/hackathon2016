@@ -1,5 +1,6 @@
 @extends('base')
 
 @section('content')
-    <p>This is my body content.</p>
+<ng-view></ng-view>
+
 @endsection
