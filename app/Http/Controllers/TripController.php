@@ -114,6 +114,7 @@ class TripController extends Controller
                 1 => [
                     'id'         => 1,
                     'name'       => 'Gluten free trip - traveller',
+                    'description' => 'Planned this trip for my relaxed day in Berlin with a \'glutenfree\' stop in a nice italian restaurant.',
                     'start_date' => new \DateTime(20160320),
                     'end_date'   => new \DateTime(20160320),
                     'started'    => false,
@@ -203,6 +204,7 @@ class TripController extends Controller
                 2 => [
                     'id'         => 2,
                     'name'       => 'Gluten free trip - family',
+                    'description' => 'Visiting a city with 2 children can be a struggle, but thanks to well connected subway stations in Berlin we made it work',
                     'start_date' => new \DateTime(20160912),
                     'end_date'   => new \DateTime(20160912),
                     'started'    => false,
