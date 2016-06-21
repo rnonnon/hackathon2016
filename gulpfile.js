@@ -9,28 +9,39 @@
  |
  */
 var elixir = require('laravel-elixir');
-elixir(function(mix) {
-    mix.sass('app.scss');
-    mix.scripts([]);
-});
-
-
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
+elixir.config.sourcemaps = false;
 
 var tsProject = ts.createProject({
     declaration: false,
     noExternalResolve: true,
     out: 'output.js'
 });
-
-gulp.task('scripts', function() {
-    return gulp.src('typescript/**/*.ts')
-        .pipe(ts(tsProject))
-        .pipe(gulp.dest('resources/assets/js'));
+gulp.task('elixir', function() {
+    return elixir(function(mix) {
+        mix.scripts([
+            "../css/main.css",
+            "../../bower_components/bootstrap/dist/css/bootstrap.min.css"], 'public/css/main.css')
+        .scripts([
+            "output.js",
+            "../../bower_components/bootstrap/dist/js/bootstrap.min.js",
+            "../../bower_components/jquery/dist/jquery.min.js",
+            "../../bower_components/angular/angular.min.js",
+            "../../bower_components/angular-route/angular-route.min.js",
+            "../../bower_components/lodash/lodash.js"], 'public/js/main.js');
+    });
 });
 
-gulp.task('watch', ['scripts'], function() {
-    gulp.watch('typescript/**/*.ts', ['scripts']);
+gulp.task('scripts', function() {
+    return gulp.src('resources/assets/typescript/**/*.ts')
+        .pipe(ts(tsProject))
+        .pipe(gulp.dest('public/js/'));
+});
+
+gulp.task('watch', ['scripts','elixir'], function() {
+    gulp.watch('resources/assets/typescript/**/*.ts', ['scripts', 'elixir']);
+    gulp.watch('resources/**/*.js', ['elixir']);
+    gulp.watch('resources/**/*.css', ['elixir']);
 });
 

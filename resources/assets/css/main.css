@@ -1,0 +1,49 @@
+.top-picture {
+    height:400px;
+}
+div.no-padding, img.no-padding, .no-padding {
+    padding:0;
+}
+.comment {
+    margin-bottom: 20px;
+}
+.user-badge {
+    height: auto;
+    width: auto;
+    max-width: 150px;
+    max-height: 150px;
+    float:left;
+    position:relative;
+    top:50%;
+    transform:translateY(-50%);
+    left:50px;
+    display:block;
+}
+.small-user-badge{
+    height: auto;
+    width: auto;
+    max-width: 50px;
+    max-height: 50px;
+}
+.circular {
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    background: url(https://avatars2.githubusercontent.com/u/14371587?v=3&u=6b992720e2f140a0825afbf07466cb6d8e099a13&s=140) no-repeat;
+    background-size:contain;
+}
+
+.circular img {
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.name {
+    float: left;
+    top: 20px;
+    padding-left:150px;
+}
+.btn-rounded {
+    border-radius: 150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+}
