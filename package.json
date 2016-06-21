@@ -18,5 +18,11 @@
   "homepage": "https://github.com/xoakx/hackathon2016#readme",
   "dependencies": {
     "bower": "^1.7.9"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^2.13.6",
+    "gulp-watch": "^4.3.8",
+    "merge2": "^1.0.2"
   }
 }
