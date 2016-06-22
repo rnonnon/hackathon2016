@@ -1,7 +1,7 @@
 var app = angular.module("trip");
 
 class TripViewController {
-    static $inject = ["TripService", "$routeParams", "uiGmapGoogleMapApi", "tripData", "$location"];
+    static $inject = ["TripService", "$routeParams", "uiGmapGoogleMapApi", "tripData", "$location", "$window"];
 
     public rateValue:number;
     public maxRateValue:number = 5;
@@ -13,7 +13,7 @@ class TripViewController {
     public showMap:boolean = false;
     public map:any;
 
-    constructor(tripService:any, routeParams, uiGmapGoogleMapApi, tripData, private $location) {
+    constructor(tripService:any, routeParams, uiGmapGoogleMapApi, tripData, private $location, private $window) {
         this.trip = tripData.trip;
         this.users = tripData.users;
         var paths = [];
@@ -75,6 +75,14 @@ class TripViewController {
     public toggleMap(){
         this.showMap = !this.showMap;
         document.querySelector("#myCard").classList.toggle("flip");
+    }
+    public goMap(location){
+        var name = location.name.replace(/\s/g,"+");
+        //var u = encodeURI("http://maps.apple.com/?ll="+location.latitude+","+location.longitude)
+        //this.$location.url("http://maps.apple.com/?q="+name+"&ll="+location.latitude+","+location.longitude);
+        this.$window.open("http://maps.apple.com/?q="+name+"&ll="+location.latitude+","+location.longitude, '_system', 'location=no');
+        //this.$location.path(u);
+        //alert("http://maps.apple.com/?q="+name+"&ll="+location.latitude+","+location.longitude);
     }
 
     static resolve:{ [key: string]: any } = {

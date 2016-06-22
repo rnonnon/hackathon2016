@@ -16875,9 +16875,10 @@ angular.module('trip').config(['$routeProvider', '$locationProvider', function (
     }]);
 var app = angular.module("trip");
 var TripViewController = (function () {
-    function TripViewController(tripService, routeParams, uiGmapGoogleMapApi, tripData, $location) {
+    function TripViewController(tripService, routeParams, uiGmapGoogleMapApi, tripData, $location, $window) {
         var _this = this;
         this.$location = $location;
+        this.$window = $window;
         this.maxRateValue = 5;
         this.isRateReadonly = false;
         this.showMap = false;
@@ -16947,7 +16948,15 @@ var TripViewController = (function () {
         this.showMap = !this.showMap;
         document.querySelector("#myCard").classList.toggle("flip");
     };
-    TripViewController.$inject = ["TripService", "$routeParams", "uiGmapGoogleMapApi", "tripData", "$location"];
+    TripViewController.prototype.goMap = function (location) {
+        var name = location.name.replace(/\s/g, "+");
+        //var u = encodeURI("http://maps.apple.com/?ll="+location.latitude+","+location.longitude)
+        //this.$location.url("http://maps.apple.com/?q="+name+"&ll="+location.latitude+","+location.longitude);
+        this.$window.open("http://maps.apple.com/?q=" + name + "&ll=" + location.latitude + "," + location.longitude, '_system', 'location=no');
+        //this.$location.path(u);
+        //alert("http://maps.apple.com/?q="+name+"&ll="+location.latitude+","+location.longitude);
+    };
+    TripViewController.$inject = ["TripService", "$routeParams", "uiGmapGoogleMapApi", "tripData", "$location", "$window"];
     TripViewController.resolve = {
         tripData: ['TripService', '$route', function (tripService, $route) {
                 return tripService.getTrip($route.current.params.id);
