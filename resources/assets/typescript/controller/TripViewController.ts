@@ -55,6 +55,12 @@ class TripViewController {
 
         });
     }
+    public goToComments() {
+        angular.element('html, body').animate({
+            scrollTop: angular.element('#comments').offset().top
+        }, 500);
+    }
+
     get tripCreator(){
         return this.users[this.trip.created_by];
     }

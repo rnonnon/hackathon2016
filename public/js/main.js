@@ -16921,6 +16921,11 @@ var TripViewController = (function () {
                 }];
         });
     }
+    TripViewController.prototype.goToComments = function () {
+        angular.element('html, body').animate({
+            scrollTop: angular.element('#comments').offset().top
+        }, 500);
+    };
     Object.defineProperty(TripViewController.prototype, "tripCreator", {
         get: function () {
             return this.users[this.trip.created_by];

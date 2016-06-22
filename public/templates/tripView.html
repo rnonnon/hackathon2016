@@ -64,7 +64,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <p><img class="comment-icon" src="/images/comment.png"/> {{tripView.trip.comments.length}} comments</p>
+            <p ng-click="tripView.goToComments()"><img class="comment-icon" src="/images/comment.png"/> {{tripView.trip.comments.length}} comments</p>
         </div>
     </div>
 
@@ -92,7 +92,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h3>Comments</h3>
+            <h3 id="comments">Comments</h3>
         </div>
     </div>
 
