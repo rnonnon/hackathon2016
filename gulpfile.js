@@ -22,8 +22,10 @@ gulp.task('elixir', function() {
     return elixir(function(mix) {
         mix.scripts([
             "../../bower_components/bootstrap/dist/css/bootstrap.min.css",
+            "../../bower_components/font-awesome/css/font-awesome.min.css",
             "../css/main.css"], 'public/css/main.css')
             .scripts([
+                "../../bower_components/lodash/lodash.js",
                 "../../bower_components/jquery/dist/jquery.min.js",
                 "../../bower_components/bootstrap/dist/js/bootstrap.min.js",
                 "../../bower_components/angular/angular.min.js",
@@ -31,7 +33,9 @@ gulp.task('elixir', function() {
                 "../../bower_components/angular-animate/angular-animate.min.js",
                 "../../bower_components/angular-bootstrap/ui-bootstrap.min.js",
                 "../../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
-                "../../bower_components/lodash/lodash.js"], 'public/js/main.js');
+                "../../bower_components/angular-simple-logger/dist/angular-simple-logger.min.js",
+                "google-map.min.js",
+                "output.js"], 'public/js/main.js');
             mix.copy("../../bower_components/bootstrap/dist/fonts", 'public/fonts');
     });
 });
@@ -39,7 +43,7 @@ gulp.task('elixir', function() {
 gulp.task('scripts', function() {
     return gulp.src('resources/assets/typescript/**/*.ts')
         .pipe(ts(tsProject))
-        .pipe(gulp.dest('public/js/'));
+        .pipe(gulp.dest('resources/assets/js/'));
 });
 
 gulp.task('watch', ['scripts','elixir'], function() {

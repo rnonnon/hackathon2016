@@ -14,7 +14,8 @@
     "font-awesome": "4.6.3",
     "jquery": "2.2.2",
     "lodash": "4.13.1",
-    "bootstrap": "3.3.6"
+    "bootstrap": "3.3.6",
+    "angular-simple-logger": "^0.1.7"
   },
   "resolutions": {
     "angular": "1.5.7"

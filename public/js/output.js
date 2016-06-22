@@ -1,8 +1,15 @@
 angular.module('trip', [
     'ngRoute',
     'ngAnimate',
-    'ui.bootstrap'
-]);
+    'ui.bootstrap',
+    'uiGmapgoogle-maps'
+]).config(function (uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyB7dKAY4ddK_SdBbWMhG56SFzuAE3J_bQk',
+        v: '3.20',
+        libraries: 'weather,geometry,visualization'
+    });
+});
 angular.module('trip').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/trip/:id', {
@@ -19,13 +26,34 @@ angular.module('trip').config(['$routeProvider', '$locationProvider', function (
         $locationProvider.html5Mode(true);
     }]);
 var app = angular.module("trip");
+var TripService = (function () {
+    function TripService($http) {
+        this.$http = $http;
+    }
+    TripService.prototype.getTrip = function (id) {
+        return this.$http.get("/api/start/" + id).then(function (i) {
+            var users = {};
+            i.data.users.map(function (user) {
+                users[user.id] = user;
+            });
+            return {
+                trip: i.data.trips[id],
+                users: users
+            };
+        });
+    };
+    TripService.$inject = ['$http'];
+    return TripService;
+}());
+app.service("TripService", TripService);
+var app = angular.module("trip");
 var TripViewController = (function () {
     function TripViewController(tripService, routeParams, tripData) {
         this.maxRateValue = 5;
         this.isRateReadonly = false;
         this.trip = tripData.trip;
         this.users = tripData.users;
-        angular.element("body").css("background-image", "");
+        this.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
     }
     Object.defineProperty(TripViewController.prototype, "tripCreator", {
         get: function () {
@@ -51,24 +79,3 @@ var TripViewController = (function () {
     return TripViewController;
 }());
 app.controller("TripViewController", TripViewController);
-var app = angular.module("trip");
-var TripService = (function () {
-    function TripService($http) {
-        this.$http = $http;
-    }
-    TripService.prototype.getTrip = function (id) {
-        return this.$http.get("/api/start/" + id).then(function (i) {
-            var users = {};
-            i.data.users.map(function (user) {
-                users[user.id] = user;
-            });
-            return {
-                trip: i.data.trips[id],
-                users: users
-            };
-        });
-    };
-    TripService.$inject = ['$http'];
-    return TripService;
-}());
-app.service("TripService", TripService);

@@ -1,17 +1,39 @@
 <div class="container-fluid trip-view" ng-style="{'background-image':'url(/images/background-{{tripView.trip.id}}.jpg)'}">
     <div class="row no-padding">
         <div>
-            <img class="top-picture col-xs-12 no-padding" ng-src="/images/header-{{tripView.trip.id}}.jpg"/>
-
-            <div style="position:relative">
-                <div>
-                    <img class="img-circle user-badge" ng-src="/images/comment-profile-{{tripView.trip.created_by}}.png"
-                         alt=""/>
-                </div>
-                <div class="name">
-                    <h2>{{tripView.tripCreator.firstname}}</h2>
+            <div class="back-button" ng-show="!tripView.showMap">
+                <a href="/"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            </div>
+            <div class="show-map">
+                <span class="fa" ng-class="{'fa-map-o':!tripView.showMap,'fa-map':tripView.showMap}" ng-click="tripView.toggleMap()"></span>
+            </div>
+            <div class="flip-container" id="myCard">
+                <div class="flipper">
+                    <div class="front">
+                        <div>
+                            <img class="top-picture col-xs-12 no-padding" ng-src="/images/header-{{tripView.trip.id}}.jpg"/>
+                            <div style="position:relative">
+                                <div>
+                                    <img class="img-circle user-badge" ng-src="/images/comment-profile-{{tripView.trip.created_by}}.png"
+                                         alt=""/>
+                                </div>
+                                <div class="name">
+                                    <h2>{{tripView.tripCreator.firstname}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <ui-gmap-google-map center='tripView.map.center' zoom='tripView.map.zoom'>
+                            <ui-gmap-polyline ng-repeat="p in tripView.map.polylines" path="p.path" stroke="p.stroke" visible='p.visible'
+                                              geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></ui-gmap-polyline>
+                            <ui-gmap-marker ng-repeat="m in tripView.map.markers" coords="m.coords" idkey="m.id">
+                            </ui-gmap-marker>
+                        </ui-gmap-google-map>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
     <div class="row">
@@ -44,10 +66,6 @@
         <div class="col-xs-12">
             <p><img class="comment-icon" src="/images/comment.png"/> {{tripView.trip.comments.length}} comments</p>
         </div>
-    </div>
-
-    <div class="row text-center">
-        <button type="button" class="btn-rounded btn btn-default btn-lg map-button">Map view</button>
     </div>
 
     <div ng-repeat="location in tripView.trip.locations">
