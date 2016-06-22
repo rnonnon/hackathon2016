@@ -5,6 +5,18 @@ class TripService {
     constructor(private $http){}
 
     public getTrip(id:number):ng.Promise<Trip>{
+        return this.$http.get("/api/index").then((i)=>{
+            var users = {};
+            i.data.users.map((user)=>{
+                users[user.id] = user;
+            });
+            return {
+                trip:i.data.trips[id],
+                users:users
+            };
+        });
+    }
+    public startTrip(id:number):ng.Promise<Trip>{
         return this.$http.get("/api/start/"+id).then((i)=>{
             var users = {};
             i.data.users.map((user)=>{

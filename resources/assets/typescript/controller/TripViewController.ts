@@ -1,7 +1,7 @@
 var app = angular.module("trip");
 
 class TripViewController {
-    static $inject = ["TripService", "$routeParams", "uiGmapGoogleMapApi", "tripData"];
+    static $inject = ["TripService", "$routeParams", "uiGmapGoogleMapApi", "tripData", "$location"];
 
     public rateValue:number;
     public maxRateValue:number = 5;
@@ -13,7 +13,7 @@ class TripViewController {
     public showMap:boolean = false;
     public map:any;
 
-    constructor(tripService:any, routeParams, uiGmapGoogleMapApi, tripData) {
+    constructor(tripService:any, routeParams, uiGmapGoogleMapApi, tripData, private $location) {
         this.trip = tripData.trip;
         this.users = tripData.users;
         var paths = [];
@@ -32,7 +32,6 @@ class TripViewController {
         this.map = { center: { latitude: paths[0].latitude, longitude: paths[0].longitude } };
         uiGmapGoogleMapApi.then(() => {
             this.map.markers = markers;
-            console.log(markers);
             this.map.polylines = [
                 {
                     id: 1,
@@ -63,6 +62,10 @@ class TripViewController {
         return _.keys(this.trip.locations).length;
     }
 
+    public startTrip(){
+        this.$location.path("/trip/"+this.trip.id+"/start");
+    }
+
     public toggleMap(){
         this.showMap = !this.showMap;
         document.querySelector("#myCard").classList.toggle("flip");
@@ -70,10 +73,15 @@ class TripViewController {
 
     static resolve:{ [key: string]: any } = {
         tripData: ['TripService', '$route', function (tripService:TripService, $route) {
-        return tripService.getTrip($route.current.params.id);
-    }]
-};
+            return tripService.getTrip($route.current.params.id);
+        }]
+    };
 
+    static resolveStart:{ [key: string]: any } = {
+        tripData: ['TripService', '$route', function (tripService:TripService, $route) {
+            return tripService.startTrip($route.current.params.id);
+        }]
+    };
 }
 
 app.controller("TripViewController", TripViewController);

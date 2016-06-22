@@ -70,7 +70,22 @@ div.no-padding, img.no-padding, .no-padding {
 .location-picture {
     padding-top: 15px;
 }
-
+.location-description-big {
+    font-weight: bold;
+    font-size:1.2em;
+}
+.current-location-description{
+    height:350px;
+    position:relative;
+}
+.up-next {
+    position:absolute;
+    bottom:0;
+}
+.location-picture-big img{
+    max-height:180px;
+    max-width:250px;
+}
 .user-badge {
     width: 100px;
     height: 100px;
@@ -104,7 +119,7 @@ button.btn.btn-rounded {
     width:100%;
     overflow: hidden;
 }
-.angular-google-map-container { height: 400px; }
+.angular-google-map-container { height: 350px; }
 .show-map {
     font-size:1em;
     top:20px;
@@ -123,21 +138,32 @@ button.btn.btn-rounded {
     padding-left:20px;
 }
 
+.over-main-picture{
+    position:absolute;
+    bottom:0;
+    left:20px;
+    z-index:10;
+}
 
+.trip-picture-area {
+    position: relative;
+    height:300px
+}
 
-
+.trip-picture-area h3{
+    font-weight:bold;
+}
+.trip-picture-area .rating{
+    width:150px;
+}
 /* entire container, keeps perspective */
 .flip-container {
     perspective: 1000px;
 }
-/* flip the pane when hovered */
-.flip-container:hover .flipper, .flip-container.hover .flipper {
-    transform: rotateY(180deg);
-}
 
 .flip-container, .front, .back {
     width: 100%;
-    height: 400px;
+    height: 350px;
 }
 
 /* flip speed goes here */
@@ -168,6 +194,6 @@ button.btn.btn-rounded {
 .back {
     transform: rotateY(180deg);
 }
-.flip-container:hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper {
+.flip-container.hover .flipper, .flip-container.flip .flipper {
     transform: rotateY(180deg);
 }

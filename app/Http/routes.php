@@ -19,6 +19,8 @@ Route::get('/api/check-in/{tripId}/{locationId}', 'TripController@checkIn');
 
 Route::get('/api/skip/{tripId}/{locationId}', 'TripController@skipLocation');
 
-Route::get('trip/{id}', 'Test@index');
+Route::get('trip/{id}', 'TripController@showTripView');
+
+Route::get('trip/{id}/start', 'TripController@startTripView');
 
 Route::get('/', 'Home@index');

@@ -30,6 +30,14 @@ class TripController extends Controller
         return $this->output();
     }
 
+    public function showTripView($id) {
+        return view('app');
+    }
+
+    public function startTripView($id) {
+        return view('app');
+    }
+
     public function checkIn($tripId, $locationId) {
         $this->setTripPath($tripId, 'locations.' . $locationId . '.visited', true);
 

@@ -1,0 +1,88 @@
+<div class="container-fluid trip-view" ng-style="{'background-image':'url(/images/background-{{tripView.trip.id}}.jpg)'}">
+    <div class="row no-padding">
+        <div>
+            <div class="back-button" ng-show="!tripView.showMap">
+                <a href="/"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            </div>
+            <div class="show-map">
+                <span class="fa" ng-class="{'fa-map-o':!tripView.showMap,'fa-map':tripView.showMap}" ng-click="tripView.toggleMap()"></span>
+            </div>
+            <div class="flip-container" id="myCard">
+                <div class="flipper">
+                    <div class="front">
+                        <div class="trip-picture-area">
+                            <img class="top-picture col-xs-12 no-padding" ng-src="/images/header-{{tripView.trip.id}}.jpg"/>
+                            <div class="over-main-picture">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h3>{{tripView.trip.name}}</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <img class="rating" src="/images/stars.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <ui-gmap-google-map center='tripView.map.center' zoom='tripView.map.zoom'>
+                            <ui-gmap-polyline ng-repeat="p in tripView.map.polylines" path="p.path" stroke="p.stroke" visible='p.visible'
+                                              geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></ui-gmap-polyline>
+                            <ui-gmap-marker ng-repeat="m in tripView.map.markers" coords="m.coords" idkey="m.id">
+                            </ui-gmap-marker>
+                        </ui-gmap-google-map>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-repeat="location in tripView.trip.locations">
+        <div class="row">
+            <div ng-if="$index == 0">
+                <div class="col-xs-2" >
+                    <img src="/images/track-top-current.png" ng-if="$index == 0"/>
+                </div>
+                <div class="col-xs-10 current-location-description">
+                    <div class="row">
+                        <div class="col-xs-12 location-picture-big">
+                            <img class="img-rounded" ng-src="/images/waypoint-1-big.jpg"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 location-description-big">
+                            <p>{{location.description}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <button type="button" class="btn-rounded btn btn-default btn-lg">Get There</button>
+                            <button type="button" class="btn-rounded btn btn-default btn-lg">Info</button>
+                        </div>
+                    </div>
+                    <div class="up-next">
+                        <p>UP NEXT</p>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="$index != 0">
+                <div class="col-xs-2">
+                    <img src="/images/track-bottom.png" ng-if="$index == (tripView.locationsSize - 1)"/>
+                    <img src="/images/track-middle.png" ng-if="$index != 0 && $index != (tripView.locationsSize - 1)"/>
+                </div>
+                <div class="col-xs-10">
+                    <div class="row">
+                        <div class="col-xs-2 location-picture">
+                            <img class="img-rounded" ng-src="/images/waypoint-{{$index+1}}.jpg"/>
+                        </div>
+                        <div class="col-xs-10 location-description">
+                            <p>{{location.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

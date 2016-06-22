@@ -7,6 +7,13 @@ angular.module('trip').config(['$routeProvider', '$locationProvider', function (
             title: 'Trip view',
             resolve:TripViewController.resolve
         })
+        .when('/trip/:id/start', {
+            templateUrl: '/templates/tripStart.html',
+            controller: 'TripViewController',
+            controllerAs: 'tripView',
+            title: 'Trip start',
+            resolve:TripViewController.resolveStart
+        })
         .when('/', {
             templateUrl: '/templates/home.html',
             title: 'Home'

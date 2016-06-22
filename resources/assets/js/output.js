@@ -18,6 +18,13 @@ angular.module('trip').config(['$routeProvider', '$locationProvider', function (
             title: 'Trip view',
             resolve: TripViewController.resolve
         })
+            .when('/trip/:id/start', {
+            templateUrl: '/templates/tripStart.html',
+            controller: 'TripViewController',
+            controllerAs: 'tripView',
+            title: 'Trip start',
+            resolve: TripViewController.resolveStart
+        })
             .when('/', {
             templateUrl: '/templates/home.html',
             title: 'Home'
@@ -26,8 +33,9 @@ angular.module('trip').config(['$routeProvider', '$locationProvider', function (
     }]);
 var app = angular.module("trip");
 var TripViewController = (function () {
-    function TripViewController(tripService, routeParams, uiGmapGoogleMapApi, tripData) {
+    function TripViewController(tripService, routeParams, uiGmapGoogleMapApi, tripData, $location) {
         var _this = this;
+        this.$location = $location;
         this.maxRateValue = 5;
         this.isRateReadonly = false;
         this.showMap = false;
@@ -49,7 +57,6 @@ var TripViewController = (function () {
         this.map = { center: { latitude: paths[0].latitude, longitude: paths[0].longitude } };
         uiGmapGoogleMapApi.then(function () {
             _this.map.markers = markers;
-            console.log(markers);
             _this.map.polylines = [
                 {
                     id: 1,
@@ -86,14 +93,22 @@ var TripViewController = (function () {
         enumerable: true,
         configurable: true
     });
+    TripViewController.prototype.startTrip = function () {
+        this.$location.path("/trip/" + this.trip.id + "/start");
+    };
     TripViewController.prototype.toggleMap = function () {
         this.showMap = !this.showMap;
         document.querySelector("#myCard").classList.toggle("flip");
     };
-    TripViewController.$inject = ["TripService", "$routeParams", "uiGmapGoogleMapApi", "tripData"];
+    TripViewController.$inject = ["TripService", "$routeParams", "uiGmapGoogleMapApi", "tripData", "$location"];
     TripViewController.resolve = {
         tripData: ['TripService', '$route', function (tripService, $route) {
                 return tripService.getTrip($route.current.params.id);
+            }]
+    };
+    TripViewController.resolveStart = {
+        tripData: ['TripService', '$route', function (tripService, $route) {
+                return tripService.startTrip($route.current.params.id);
             }]
     };
     return TripViewController;
@@ -105,6 +120,18 @@ var TripService = (function () {
         this.$http = $http;
     }
     TripService.prototype.getTrip = function (id) {
+        return this.$http.get("/api/index").then(function (i) {
+            var users = {};
+            i.data.users.map(function (user) {
+                users[user.id] = user;
+            });
+            return {
+                trip: i.data.trips[id],
+                users: users
+            };
+        });
+    };
+    TripService.prototype.startTrip = function (id) {
         return this.$http.get("/api/start/" + id).then(function (i) {
             var users = {};
             i.data.users.map(function (user) {
