@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+
+    <script>
+        function navigate(dest) {
+            // If it's an iPhone..
+            if ((navigator.platform.indexOf("iPhone") !== -1) || (navigator.platform.indexOf("iPod") !== -1)) {
+                function iOSversion() {
+                    if (/iP(hone|od|ad)/.test(navigator.platform)) {
+                        // supports iOS 2.0 and later: <http://bit.ly/TJjs1V>
+                        var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+                        return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+                    }
+                }
+                var ver = iOSversion() || [0];
+
+                if (ver[0] >= 6) {
+                    protocol = 'maps://';
+                } else {
+                    protocol = 'http://';
+
+                }
+                window.location = protocol + 'maps.apple.com/maps?q=' + dest;
+            } else {
+                window.open('http://maps.google.com?q=' + dest);
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1>Dynamic JS MAP-Link on all OS</h1>
+    <button onclick="navigate('Spaldingstraße%2064%2020097%20Hamburg')">Find Us</button>
+
+    
+    <h1>Static Links</h1>
+    <h3>Desktop Google Maps</h3>
+    <a href="http://maps.google.com?q=Spaldingstraße%2064%2020097%20Hamburg">Find Us</a>
+
+    <h3>iPhone Maps</h3>
+    <a href="http://maps.apple.com/?q=Spaldingstraße%2064%2020097%20Hamburg">Find Us</a>
+    
+    <h3>Android Maps</h3>
+    <a href="geo:Spaldingstraße%2064%2020097%20Hamburg">Find Us</a>
+
+    <h3>WP7 Maps</h3>
+    <a href="maps:Spaldingstraße%2064%2020097%20Hamburg">Find Us</a>
+
+</body>
+
+</html>
